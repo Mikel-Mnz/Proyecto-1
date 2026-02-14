@@ -231,16 +231,18 @@ body {
     }
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
     .container {
+        top: 42%; /* sube el jarrón */
         transform: translate(-50%, -50%) scale(0.7);
     }
 
     .texto {
+        bottom: 180px; /* acerca el texto al jarrón */
         font-size: 22px;
     }
 }
+
 
 
 /* ===== PANTALLA DEL CANDADO ===== */
