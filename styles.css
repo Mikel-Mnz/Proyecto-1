@@ -196,12 +196,12 @@ body {
 
 /* TEXTO */
 .texto {
-    margin-top: 40px;
+    margin-top: 70px;
     color: white;
     font-size: 32px;
     text-align: center;
     width: 90%;
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 /* ANIMACIONES */
