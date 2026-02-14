@@ -196,10 +196,7 @@ body {
 
 /* TEXTO */
 .texto {
-    position: absolute;
-    bottom: 110px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 40px;
     color: white;
     font-size: 32px;
     text-align: center;
@@ -232,24 +229,15 @@ body {
 }
 
 @media (max-width: 768px) {
+    .container {
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+
     .texto {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        transform: none;
-        margin-top: 40px;
-        padding-bottom: 40px;
+        margin-top: 20px;
         font-size: 22px;
     }
-
-    .scene {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 }
-
-
 
 
 /* ===== PANTALLA DEL CANDADO ===== */
