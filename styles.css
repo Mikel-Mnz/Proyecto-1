@@ -1,0 +1,322 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY (SCROLL HABILITADO) */
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(
+    circle at top,
+    #0e1833 0%,
+    #081226 45%,
+    #01040c 100%
+    );
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ESCENA (ESPACIO EXTRA PARA SCROLL) */
+.scene {
+    position: relative;
+    width: 100%;
+    min-height: 120vh;
+}
+
+/* CONTENEDOR DEL RAMO (ESCALADO CORRECTO) */
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.85);
+    transform-origin: top center;
+}
+
+/* JARRÓN */
+.glass {
+    width: 600px;
+    height: 800px;
+    background: #122139;
+    border-radius: 300px 300px 0 0;
+    position: relative;
+}
+
+.glass::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 25px solid #122139;
+    border-radius: 50%;
+    left: 256px;
+    top: -74px;
+}
+
+.glass::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 15px;
+    background: #a52a2a;
+    top: 100%;
+}
+
+/* BRILLO DEL JARRÓN */
+.shine {
+    position: absolute;
+    width: 26px;
+    height: 330px;
+    background: white;
+    opacity: 0.2;
+    border-radius: 100px;
+    left: 85%;
+    top: 200px;
+}
+
+.shine::before {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 40px;
+    background: white;
+    top: 365px;
+    border-radius: 100px;
+}
+
+/* PÉTALOS */
+.petals > div {
+    position: absolute;
+    width: 85px;
+    height: 120px;
+    top: 200px;
+    background: #d52d58;
+}
+
+.petals > div:nth-child(1) {
+    left: 268px;
+    box-shadow: 0 0 60px rgba(245, 148, 184, 1);
+}
+
+.petals > div:nth-child(even) {
+    left: 230px;
+    border-radius: 0 50px 0 50px;
+    transform-origin: bottom right;
+}
+
+.petals > div:nth-child(odd):not(:first-child) {
+    left: 300px;
+    border-radius: 50px 0 50px 0;
+    transform-origin: bottom left;
+}
+
+.petals > div:nth-child(2) { animation: bloom2 3s ease-in-out forwards; }
+.petals > div:nth-child(3) { animation: bloom3 3s ease-in-out forwards, glowing 2.5s infinite; }
+.petals > div:nth-child(4) { animation: bloom4 3s ease-in-out forwards, glowing 2.5s infinite; }
+.petals > div:nth-child(5) { animation: bloom5 3s ease-in-out forwards, glowing 2.5s infinite; }
+.petals > div:nth-child(6) { animation: bloom6 3s ease-in-out forwards, glowing 2.5s infinite; }
+.petals > div:nth-child(7) { animation: bloom7 3s ease-in-out forwards, glowing 2.5s infinite; }
+
+/* PÉTALOS CAÍDOS */
+.deadPetals > div {
+    position: absolute;
+    width: 20px;
+    height: 15px;
+    background: #d52d58;
+    border-radius: 0 30px 0 30px;
+    top: 200px;
+    box-shadow: 0 0 30px rgba(245, 148, 184, .5);
+    animation: falling 20s ease-in-out infinite;
+}
+
+.deadPetals > div:nth-child(1) { left: 180px; animation-delay: 4s; }
+.deadPetals > div:nth-child(2) { left: 240px; animation-delay: 8s; }
+.deadPetals > div:nth-child(3) { left: 300px; animation-delay: 12s; }
+.deadPetals > div:nth-child(4) { left: 360px; animation-delay: 16s; }
+
+/* TALLO */
+.leaves > div:nth-child(1) {
+    position: absolute;
+    width: 15px;
+    height: 390px;
+    background: #054c05;
+    left: 300px;
+    top: 308px;
+}
+
+/* HOJAS (MÁS CERCA DEL TALLO, SIN BRILLO) */
+.leaves > div:nth-child(2),
+.leaves > div:nth-child(3) {
+    position: absolute;
+    width: 50px;
+    height: 110px;
+    background: #19762a;
+    top: 380px;
+    border-radius: 50px 0 50px 0;
+    transform-origin: bottom center;
+}
+
+.leaves > div:nth-child(2) {
+    left: 280px;
+    transform: rotate(-70deg);
+}
+
+.leaves > div:nth-child(3) {
+    left: 285px;
+    transform: rotate(70deg) scaleX(-1);
+}
+
+/* ESPINAS */
+.thorns > div {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.thorns > div:nth-child(odd) {
+    border-left: 15px solid #054c05;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    left: 315px;
+}
+
+.thorns > div:nth-child(even) {
+    border-right: 15px solid #054c05;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    left: 285px;
+}
+
+.thorns > div:nth-child(1) { top: 465px; }
+.thorns > div:nth-child(2) { top: 390px; }
+.thorns > div:nth-child(3) { top: 525px; }
+
+/* TEXTO */
+.texto {
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 32px;
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+}
+
+/* ANIMACIONES */
+@keyframes bloom2 {
+    100% { transform: rotate(-60deg) translate(-150px, 400px); }
+}
+@keyframes bloom3 { 100% { transform: rotate(50deg); } }
+@keyframes bloom4 { 100% { transform: rotate(-25deg); } }
+@keyframes bloom5 { 100% { transform: rotate(25deg); } }
+@keyframes bloom6 { 100% { transform: rotate(-10deg); } }
+@keyframes bloom7 { 100% { transform: rotate(10deg); } }
+
+@keyframes glowing {
+    50% {
+        background: #d7365f;
+        box-shadow: 0 0 60px rgba(245, 148, 184, 1);
+    }
+}
+
+@keyframes falling {
+    100% {
+        top: 335px;
+        opacity: 0;
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+
+    .texto {
+        font-size: 22px;
+    }
+}
+
+
+/* ===== PANTALLA DEL CANDADO ===== */
+
+.lock-body {
+    min-height: 100vh;
+    background: radial-gradient(
+        circle at top,
+        #0a142b 0%,
+        #050c1a 50%,
+        #000208 100%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.lock-screen {
+    text-align: center;
+    color: white;
+}
+
+.lock-icon {
+    font-size: 90px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.lock-screen h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.lock-screen p {
+    font-size: 18px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+.lock-button {
+    display: inline-block;
+    padding: 14px 40px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #d52d58, #a81f45);
+    box-shadow: 0 0 25px rgba(213, 45, 88, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lock-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px rgba(213, 45, 88, 0.9);
+}
+
+
+/* BOTÓN DISCRETO PARA REGRESAR AL CANDADO */
+.back-lock {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 18px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 10px;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.back-lock:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);
+}
